@@ -10,7 +10,6 @@
     "clean": "gts clean",
     "compile": "tsc",
     "fix": "gts fix",
-    "prepare": "npm run compile",
     "migrate:up": "knex migrate:latest --knexfile src/db/knex.ts",
     "migrate:down": "knex migrate:rollback --knexfile src/db/knex.ts"
   },
