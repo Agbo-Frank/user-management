@@ -76,6 +76,12 @@ If your project has API documentation, you can access it via:
    https://documenter.getpostman.com/view/17567046/2sAYdkFTJP
    ```
 
+### Deployed API
+Access the live API here::
+   ```sh
+   https://user-management-fmva.onrender.com
+   ```
+
 ### Contributing
 1. Fork the repository.
 2. Create a new branch (`feature/your-feature`).
