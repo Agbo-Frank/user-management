@@ -29,13 +29,24 @@ export const getUserById = async (id: string) => {
   const data = await db("users as u")
     .leftJoin("addresses as a", "u.id", "a.user_id")
     .where("u.id", id)
-    .select("*")
+    .select([
+      "u.id",
+      "u.first_name",
+      "u.last_name",
+      "u.email",
+      "u.created_at",
+      "u.updated_at",
+      "a.street",
+      "a.city",
+      "a.state",
+      "a.country"
+    ])
     .first()
   if (!data) {
     throw new NotFoundException("User not found")
   }
 
-  return { message: "User count successfully", data }
+  return { message: "User details retrieved successfully", data }
 }
 
 export const createUser = async (payload: ICreateUser) => {
