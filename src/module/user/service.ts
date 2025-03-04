@@ -12,10 +12,13 @@ export const getUsers = async (payload: IPagination) => {
     .limit(limit)
     .offset(offset);
 
+  const result = await User().count<{ count: number }>("* as count").first();
+
   const data = {
     data: users,
     page,
-    limit
+    limit,
+    total: result?.count
   }
   return { message: "User retrieved successfully", data }
 }

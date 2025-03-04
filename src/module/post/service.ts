@@ -16,17 +16,22 @@ export const createPost = async (payload: ICreatePost) => {
 export const getPosts = async (payload: any) => {
   const { limit, offset, page, ...query } = payload;
 
-  const posts = await filterGenerator(Post(), query, ["user_id"])
+  const postQuery = filterGenerator(Post(), query, ["user_id"])
+
+  const posts = await postQuery
     .select("*")
     .limit(limit)
     .offset(offset);
 
+  const { count } = await postQuery.count<{ count: number }>("* as count").first();
+
   const data = {
     data: posts,
     page,
-    limit
+    limit,
+    total: count
   }
-  return { message: "Post retrieved successfully", data: null }
+  return { message: "Post retrieved successfully", data }
 }
 
 export const deletePost = async (id: string) => {
