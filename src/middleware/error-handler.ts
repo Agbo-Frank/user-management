@@ -30,11 +30,11 @@ const errorHandler = async (
     return responsHandler(res, err.statusCode, err?.message, err?.data);
   }
 
-  // mail.send({
-  //   to: DEV_MAILS,
-  //   subject: 'Japa error',
-  //   text: JSON.stringify(error_payload, null, 2),
-  // });
+  mail.send({
+    to: DEV_MAILS,
+    subject: 'Roqqu error',
+    text: JSON.stringify(error_payload, null, 2),
+  });
   return responsHandler(
     res,
     StatusCodes.INTERNAL_SERVER_ERROR,
